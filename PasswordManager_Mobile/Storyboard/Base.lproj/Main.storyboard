@@ -981,6 +981,12 @@ MANAGER</string>
                                 </subviews>
                                 <accessibility key="accessibilityConfiguration" label="signIn"/>
                             </view>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bLW-h1-9VN">
+                                <rect key="frame" x="58" y="315" width="240" height="128"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <viewLayoutGuide key="contentLayoutGuide" id="n7C-hB-H7G"/>
+                                <viewLayoutGuide key="frameLayoutGuide" id="xvA-LZ-HXL"/>
+                            </scrollView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="gZW-yf-1ii"/>
                         <color key="backgroundColor" systemColor="systemGreenColor"/>
