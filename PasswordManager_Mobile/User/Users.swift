@@ -21,16 +21,16 @@ class Users {
 
         allUsers.append(user)
         save(data: allUsers)
-        p()
-        print(allUsers.count)
+//        p()
+//        print(allUsers.count)
     }
     
-    func p() {
-        for i in allUsers {
-            print("\(i.mobileNumber)\t \(i.mpin)")
-            
-        }
-    }
+//    func p() {
+//        for i in allUsers {
+//            print("\(i.mobileNumber)\t \(i.mpin)")
+//
+//        }
+//    }
     
     
     func loadDefaultUsers() {
@@ -76,10 +76,10 @@ class Users {
     
     func authenticateSignIn(user: User) -> Bool {
             
-//        loadDefaultUsers()
+        
         var sucess = false
-        p()
-        print(allUsers.count)
+//        p()
+//        print(allUsers.count)
         
         for (_,j) in allUsers.enumerated() {
             if j.mobileNumber == user.mobileNumber && j.mpin == user.mpin {

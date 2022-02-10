@@ -20,10 +20,9 @@
 		EEBFDCA527AD0CEC0069159D /* SocialMediaListsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEBFDCA427AD0CEC0069159D /* SocialMediaListsViewController.swift */; };
 		EEC096A627B0225D002349D3 /* DataSyncViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEC096A527B0225D002349D3 /* DataSyncViewController.swift */; };
 		EEC9063427ABB34400D09287 /* Fonts in Resources */ = {isa = PBXBuildFile; fileRef = EEC9063327ABB34400D09287 /* Fonts */; };
-		EEC9063727ABC4EA00D09287 /* Scene03ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEC9063627ABC4EA00D09287 /* Scene03ViewController.swift */; };
 		EEC948C627B24B26001735F1 /* Users.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEC948C527B24B26001735F1 /* Users.swift */; };
+		EECABF8427B3CF88002B0614 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EECABF8327B3CF87002B0614 /* SignInViewController.swift */; };
 		EECC976D27B103260093F490 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = EECC976C27B103260093F490 /* User.swift */; };
-		EEDAD32627AA580900A9859A /* Scene02ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEDAD32527AA580900A9859A /* Scene02ViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,10 +41,9 @@
 		EEBFDCA427AD0CEC0069159D /* SocialMediaListsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocialMediaListsViewController.swift; sourceTree = "<group>"; };
 		EEC096A527B0225D002349D3 /* DataSyncViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataSyncViewController.swift; sourceTree = "<group>"; };
 		EEC9063327ABB34400D09287 /* Fonts */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Fonts; sourceTree = "<group>"; };
-		EEC9063627ABC4EA00D09287 /* Scene03ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Scene03ViewController.swift; sourceTree = "<group>"; };
 		EEC948C527B24B26001735F1 /* Users.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Users.swift; sourceTree = "<group>"; };
+		EECABF8327B3CF87002B0614 /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
 		EECC976C27B103260093F490 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
-		EEDAD32527AA580900A9859A /* Scene02ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Scene02ViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,7 +79,7 @@
 				EEB9F6E127B166A300761F85 /* Delegate */,
 				EEB9F6E327B166D100761F85 /* Storyboard */,
 				EEB9F6D627B1654C00761F85 /* Home screen */,
-				EEB9F6D427B1644C00761F85 /* Sign in */,
+				EECABF8727B3F23E002B0614 /* Sign In  */,
 				EEB9F6DB27B165F600761F85 /* Site */,
 				EEB9F6DD27B1665C00761F85 /* User */,
 				EEABBA5F27B283EC009AAEE8 /* Data store */,
@@ -98,15 +96,6 @@
 				EEABBA6527B28437009AAEE8 /* DataStore.swift */,
 			);
 			path = "Data store";
-			sourceTree = "<group>";
-		};
-		EEB9F6D427B1644C00761F85 /* Sign in */ = {
-			isa = PBXGroup;
-			children = (
-				EEDAD32527AA580900A9859A /* Scene02ViewController.swift */,
-				EEC9063627ABC4EA00D09287 /* Scene03ViewController.swift */,
-			);
-			path = "Sign in";
 			sourceTree = "<group>";
 		};
 		EEB9F6D627B1654C00761F85 /* Home screen */ = {
@@ -154,6 +143,14 @@
 				EE91243227A96A8800F8337A /* LaunchScreen.storyboard */,
 			);
 			path = Storyboard;
+			sourceTree = "<group>";
+		};
+		EECABF8727B3F23E002B0614 /* Sign In  */ = {
+			isa = PBXGroup;
+			children = (
+				EECABF8327B3CF87002B0614 /* SignInViewController.swift */,
+			);
+			path = "Sign In ";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -228,11 +225,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				EEB477F127AE6A52001F2448 /* Site.swift in Sources */,
-				EEDAD32627AA580900A9859A /* Scene02ViewController.swift in Sources */,
 				EE91242827A96A8700F8337A /* AppDelegate.swift in Sources */,
 				EEC096A627B0225D002349D3 /* DataSyncViewController.swift in Sources */,
+				EECABF8427B3CF88002B0614 /* SignInViewController.swift in Sources */,
 				EEBFDCA527AD0CEC0069159D /* SocialMediaListsViewController.swift in Sources */,
-				EEC9063727ABC4EA00D09287 /* Scene03ViewController.swift in Sources */,
 				EEB477F427AE6A64001F2448 /* Sites.swift in Sources */,
 				EEABBA6627B28437009AAEE8 /* DataStore.swift in Sources */,
 				EE91242A27A96A8700F8337A /* SceneDelegate.swift in Sources */,
