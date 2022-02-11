@@ -6,15 +6,12 @@
 //
 
 import UIKit
+import DropDown
 
 protocol DataTransferProtocol {
     func transferData(ofNew site: Site)
     func transferDataOf(Existing site: Site)
 }
-
-
-
-
 
 
 class SitesDetailsViewController: UIViewController {
@@ -40,17 +37,31 @@ class SitesDetailsViewController: UIViewController {
     
     @IBOutlet weak var updateBtn: UIButton!
     
+    
+    @IBOutlet weak var dropdownBtn: UIButton!
+    
+    
+    
     var temporarySite: Site?
     let sitesOBJ = Sites()
     var dataTransferDelegate: DataTransferProtocol!
     var isNewSite = false
     var editBarBtnItem: UIBarButtonItem!
     
+    var dropdownMenu: DropDown = {
+       let menu = DropDown()
+        menu.dataSource = [Categories.SocialMedia.rawValue, Categories.Banking.rawValue,Categories.Gaming.rawValue
+        ]
+        return menu
+    }()
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         let textAttributes = [NSAttributedString.Key.foregroundColor:UIColor.white]
         navigationController?.navigationBar.titleTextAttributes = textAttributes
         self.editBarBtnItem = UIBarButtonItem(title: "Edit", style: .plain, target: self, action: #selector(editBtnTapped))
+        setUpDropdownMenu()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -69,12 +80,29 @@ class SitesDetailsViewController: UIViewController {
     }
 
     
+    private func setUpDropdownMenu() {
+        dropdownMenu.anchorView = sectorField
+        dropdownMenu.direction = .bottom
+        dropdownMenu.bottomOffset = CGPoint(x: 0, y:(dropdownMenu.anchorView?.plainView.bounds.height)!)
+        dropdownMenu.selectionAction = { [self] (index, item) in
+            sectorField.text = item
+        }
+        
+    }
+    
     @objc func editBtnTapped(){
         print("edit btn tapped")
         updateBtn.isHidden = false
         navigationItem.rightBarButtonItem = nil
         navigationItem.title = "Edit"
     }
+    
+    
+    @IBAction func dropdownBtnTapped(_ sender: Any) {
+        dropdownMenu.show()
+    }
+    
+    
     
     
     private func assignSitesDataToTextFields() {
