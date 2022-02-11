@@ -61,13 +61,15 @@ class SignInViewController: UIViewController {
     
     
     
-    // MARK: View Methods
+    // MARK: Views Methods
     
     override func viewDidLoad() {
         super.viewDidLoad()
         configureLabels()
         assignTextFieldDelegates()
+        scrollView.delegate = self
     }
+    
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
@@ -309,10 +311,30 @@ extension SignInViewController:  UITextFieldDelegate {
     
 }
 
+// MARK: SCROLL VIEW DELEGATE
+
+extension SignInViewController: UIScrollViewDelegate {
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        if scrollView.contentOffset.x >= 0 && scrollView.contentOffset.x <= 150 {
+            UIView.animate(withDuration: 0.5, animations: {
+                self.underLine.frame = CGRect(x: 0, y:self.signInandUpView.frame.size.height - 4 , width: 81, height: 4)
+            })
+        }else if scrollView.contentOffset.x > 150 && scrollView.contentOffset.x <= 375 {
+            UIView.animate(withDuration: 0.5, animations: {
+                self.underLine.frame = CGRect(x: self.signInandUpView.frame.size.width - 81, y:self.signInandUpView.frame.size.height - 4 , width: 81, height: 4)
+            })
+        }
+        
+//        print(scrollView.contentOffset.x)
+    }
+    
+}
 
 
 
-// MARK: ViewController Extension
+
+// MARK: ALERT AND TOAST
+
 extension UIViewController {
     
     func showAlert(title: String, message: String) {

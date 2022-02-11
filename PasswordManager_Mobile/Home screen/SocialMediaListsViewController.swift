@@ -6,10 +6,12 @@
 //
 
 import UIKit
+import DropDown
+
+
+
 
 class SocialMediaListsViewController: UIViewController, UISearchBarDelegate {
-
-    
 
     @IBOutlet weak var siteCountBtn: UIButton!
     @IBOutlet weak var tableView: UITableView!
@@ -18,28 +20,45 @@ class SocialMediaListsViewController: UIViewController, UISearchBarDelegate {
     
     @IBOutlet weak var backBtn: UIButton!
     
+    @IBOutlet weak var pathCopy: UIImageView!
+    
+    
+    @IBOutlet weak var dropDownMenuBtn: UIButton!
+    
+    @IBOutlet weak var categoryLabel: UILabel!
+    
+    
     var sitesObj = Sites()
     var data:[Site] = []
     
+    
     var filteredData: [Site] = []
+    
+    
+   
+    
+    var menu: DropDown = {
+        let menu = DropDown()
+        menu.dataSource = [Categories.All.rawValue,Categories.SocialMedia.rawValue, Categories.Banking.rawValue, Categories.Gaming.rawValue]
+        return menu
+    }()
+    
+    
     
     
     // MARK: View methods
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationController?.navigationBar.isHidden = false
+        hideUIElements()
         addLeftNavBarItems()
         addRightNavBarItems()
-        searchBar.delegate = self
-        tableView.delegate = self
-        tableView.dataSource = self
-        backBtn.setImage(UIImage(systemName: "arrow.right"), for: .normal)
+        assignDelegates()
+        setupDropdownnMenu()
+        backBtnConfig()
+        
         data = sitesObj.allSites
         filteredData = data
-        searchBar.isHidden = true
-        backBtn.isHidden = true
-    
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -48,6 +67,52 @@ class SocialMediaListsViewController: UIViewController, UISearchBarDelegate {
         siteCountBtn.setTitle(String(sitesObj.allSites.count), for: .normal)
         
     }
+    
+    // MARK: PRIVATE FUNCS
+    private func hideUIElements() {
+        pathCopy.isHidden = true
+        navigationController?.navigationBar.isHidden = false
+        searchBar.isHidden = true
+    }
+    
+    private func backBtnConfig() {
+        backBtn.isHidden = true
+        backBtn.setImage(UIImage(systemName: "arrow.right"), for: .normal)
+    }
+    private func assignDelegates(){
+        searchBar.delegate = self
+        tableView.delegate = self
+        tableView.dataSource = self
+    }
+    
+    private func setupDropdownnMenu() {
+        menu.anchorView = dropDownMenuBtn
+        menu.direction = .bottom
+        menu.bottomOffset = CGPoint(x: 0, y:(menu.anchorView?.plainView.bounds.height)!)
+        menu.selectionAction = { [self] (index,item) in
+            self.categoryLabel.text = item
+            self.filteredData = []
+            
+            if item == Categories.All.rawValue {
+                filteredData = data
+                
+            } else {
+                for site in self.sitesObj.allSites {
+                    if site.sector == item {
+                        filteredData.append(site)
+                    }
+                }
+            }
+            siteCountBtn.setTitle(String(filteredData.count), for: .normal)
+            tableView.reloadData()
+        }
+    }
+    
+  
+    
+    
+    
+    
     
     // MARK: Search Bar Configuration
     
@@ -86,7 +151,7 @@ class SocialMediaListsViewController: UIViewController, UISearchBarDelegate {
    
     private func addRightNavBarItems() {
         navigationItem.rightBarButtonItems = [
-            UIBarButtonItem(image: UIImage(named: "profile"), style: .plain, target: self, action: nil),
+            UIBarButtonItem(image: UIImage(named: "profile"), style: .plain, target: self, action: #selector(profileIconTapped)),
             UIBarButtonItem(image: UIImage(named: "sync_icn"), style: .plain, target: self, action: #selector(syncData)),
             UIBarButtonItem(image: UIImage(named: "search"), style: .plain, target: self, action: #selector(searchTapped))
         ]
@@ -94,6 +159,16 @@ class SocialMediaListsViewController: UIViewController, UISearchBarDelegate {
     }
 
     // MARK: Button Functionalities
+    
+    @IBAction func dropDownTapped(_ sender: Any) {
+        menu.show()
+        
+    }
+    
+    @objc func profileIconTapped() {
+        navigationController?.popViewController(animated: true)
+    }
+    
     @objc func searchTapped() {
         print("search btn tapped")
         searchBar.isHidden = false
